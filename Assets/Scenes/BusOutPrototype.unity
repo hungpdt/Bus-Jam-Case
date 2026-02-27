@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 124139024}
   - component: {fileID: 124139023}
   - component: {fileID: 124139022}
-  - component: {fileID: 124139021}
+  - component: {fileID: 124139028}
   m_Layer: 7
   m_Name: Car (1)
   m_TagString: Untagged
@@ -141,26 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &124139021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124139020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45646ccfdf98a46488b45943796e6168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CarDriveController
-  parkingSpot: {fileID: 156146157}
-  stopBeforeObstacle: 1.5
-  moveSpeedOverride: 0
-  stuckSpeedEps: 0.05
-  rollbackSpeed: 8
-  moveAlongForward: 1
-  verboseDebug: 1
-  debugColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!208 &124139022
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -284,13 +264,38 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124139020}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.25, y: 0.3533333, z: -1.95}
   m_LocalScale: {x: 1.33, y: 0.54, z: 3.09}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124139028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124139020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353b5617fac44ea4e8293b00b677a4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarDriveController
+  parkingSpot: {fileID: 156146157}
+  stopBeforeObstacle: 0.25
+  moveSpeedOverride: 0
+  stuckSpeedEps: 0.05
+  rollbackSpeed: 8
+  moveAlongForward: 1
+  blockerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  parkingArea: {fileID: 0}
+  constrainToParkingArea: 1
+  verboseDebug: 0
+  debugColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &156146155
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +305,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 156146157}
-  - component: {fileID: 156146156}
   - component: {fileID: 156146158}
   m_Layer: 0
   m_Name: Parking Slot
@@ -309,20 +313,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &156146156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156146155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abe5dee9d685d5b4396665325e574ea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ParkingSpot
-  lane: {fileID: 0}
-  occupied: 0
 --- !u!4 &156146157
 Transform:
   m_ObjectHideFlags: 0
@@ -332,7 +322,7 @@ Transform:
   m_GameObject: {fileID: 156146155}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.61, y: 0, z: 0}
+  m_LocalPosition: {x: -6.17, y: 0, z: 8.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -359,8 +349,8 @@ GameObject:
   - component: {fileID: 237705998}
   - component: {fileID: 237705997}
   - component: {fileID: 237705996}
-  - component: {fileID: 237705995}
   - component: {fileID: 237705994}
+  - component: {fileID: 237706001}
   m_Layer: 7
   m_Name: Car 2 (1)
   m_TagString: Untagged
@@ -390,26 +380,6 @@ NavMeshAgent:
   m_BaseOffset: 0.49999997
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &237705995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 237705993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45646ccfdf98a46488b45943796e6168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CarDriveController
-  parkingSpot: {fileID: 1428547464}
-  stopBeforeObstacle: 0.25
-  moveSpeedOverride: 0
-  stuckSpeedEps: 0.05
-  rollbackSpeed: 8
-  moveAlongForward: 1
-  verboseDebug: 1
-  debugColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!208 &237705996
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -511,13 +481,38 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237705993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 2.6500003, y: 0.3533333, z: -0.85000014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4, y: 0.3533333, z: -2.1}
   m_LocalScale: {x: 1.33, y: 0.54, z: 2.54}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &237706001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237705993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353b5617fac44ea4e8293b00b677a4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarDriveController
+  parkingSpot: {fileID: 1428547464}
+  stopBeforeObstacle: 0.25
+  moveSpeedOverride: 0
+  stuckSpeedEps: 0.05
+  rollbackSpeed: 8
+  moveAlongForward: 1
+  blockerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  parkingArea: {fileID: 0}
+  constrainToParkingArea: 1
+  verboseDebug: 0
+  debugColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &304977765
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +527,7 @@ GameObject:
   - component: {fileID: 304977766}
   - component: {fileID: 304977771}
   - component: {fileID: 304977774}
-  - component: {fileID: 304977773}
+  - component: {fileID: 304977775}
   m_Layer: 7
   m_Name: Car
   m_TagString: Untagged
@@ -654,26 +649,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &304977773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304977765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45646ccfdf98a46488b45943796e6168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CarDriveController
-  parkingSpot: {fileID: 156146157}
-  stopBeforeObstacle: 1.5
-  moveSpeedOverride: 0
-  stuckSpeedEps: 0.05
-  rollbackSpeed: 8
-  moveAlongForward: 1
-  verboseDebug: 1
-  debugColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!208 &304977774
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -690,6 +665,31 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0
+--- !u!114 &304977775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304977765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353b5617fac44ea4e8293b00b677a4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarDriveController
+  parkingSpot: {fileID: 156146157}
+  stopBeforeObstacle: 0.25
+  moveSpeedOverride: 0
+  stuckSpeedEps: 0.05
+  rollbackSpeed: 8
+  moveAlongForward: 1
+  blockerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  parkingArea: {fileID: 0}
+  constrainToParkingArea: 1
+  verboseDebug: 0
+  debugColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &320751211
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,6 +866,52 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.77296, y: 0.9, z: -0.29807}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1156075049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1156075051}
+  - component: {fileID: 1156075050}
+  m_Layer: 0
+  m_Name: ParkingArena
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1156075050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156075049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f8d9066bb3990548904846c1ea8548e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParkingArea
+  size: {x: 20.42, y: 13.74}
+  gizmoColor: {r: 0, g: 1, b: 0, a: 0.2}
+--- !u!4 &1156075051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156075049}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1056,7 +1102,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1428547464}
-  - component: {fileID: 1428547463}
   - component: {fileID: 1428547462}
   m_Layer: 0
   m_Name: Parking Slot (1)
@@ -1073,20 +1118,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428547461}
   m_CullTransparentMesh: 1
---- !u!114 &1428547463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1428547461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abe5dee9d685d5b4396665325e574ea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ParkingSpot
-  lane: {fileID: 0}
-  occupied: 0
 --- !u!4 &1428547464
 Transform:
   m_ObjectHideFlags: 0
@@ -1096,7 +1127,7 @@ Transform:
   m_GameObject: {fileID: 1428547461}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.61, y: 0, z: -3.1}
+  m_LocalPosition: {x: -2.36, y: 0, z: 8.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1115,8 +1146,8 @@ GameObject:
   - component: {fileID: 1478947078}
   - component: {fileID: 1478947077}
   - component: {fileID: 1478947074}
-  - component: {fileID: 1478947073}
   - component: {fileID: 1478947081}
+  - component: {fileID: 1478947082}
   m_Layer: 7
   m_Name: Car 2
   m_TagString: Untagged
@@ -1124,26 +1155,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1478947073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1478947072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45646ccfdf98a46488b45943796e6168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CarDriveController
-  parkingSpot: {fileID: 1428547464}
-  stopBeforeObstacle: 0.25
-  moveSpeedOverride: 0
-  stuckSpeedEps: 0.05
-  rollbackSpeed: 8
-  moveAlongForward: 1
-  verboseDebug: 1
-  debugColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!208 &1478947074
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1274,6 +1285,31 @@ NavMeshAgent:
   m_BaseOffset: 0.49999997
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1478947082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478947072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353b5617fac44ea4e8293b00b677a4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarDriveController
+  parkingSpot: {fileID: 1428547464}
+  stopBeforeObstacle: 0.25
+  moveSpeedOverride: 0
+  stuckSpeedEps: 0.05
+  rollbackSpeed: 8
+  moveAlongForward: 1
+  blockerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  parkingArea: {fileID: 0}
+  constrainToParkingArea: 1
+  verboseDebug: 0
+  debugColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &2107067398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,3 +1422,4 @@ SceneRoots:
   - {fileID: 1428547464}
   - {fileID: 1358896271}
   - {fileID: 908898515}
+  - {fileID: 1156075051}
